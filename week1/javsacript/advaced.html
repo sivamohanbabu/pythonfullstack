@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JavaScript — Advanced Concepts (Interactive)</title>
+  <style>
+    :root{
+      --bg:#081226; --card:#071226; --muted:#9fb6c8; --accent:#7ee7c7; --panel:#011827;
+    }
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;}
+    body{background:linear-gradient(180deg,#041022 0%, #071728 70%); color:#dff6f3;padding:20px;}
+    .container{max-width:1100px;margin:0 auto;}
+    header{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+    h1{margin:0;font-size:20px;color:var(--accent)}
+    p.lead{margin:0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}
+    .card{background:var(--card); padding:16px; border-radius:10px; box-shadow:0 8px 30px rgba(2,6,23,0.6); border:1px solid rgba(255,255,255,0.03)}
+    h2{margin:0 0 8px 0;color:#baf7e0;font-size:15px}
+    p.desc{color:var(--muted);margin:6px 0 12px 0;font-size:13px}
+    pre{background:var(--panel);padding:12px;border-radius:8px;overflow:auto;color:#bfeee1;margin:0;font-size:13px}
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,"Roboto Mono",monospace}
+    .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    button{background:linear-gradient(180deg,#34d399,#10b981);border:0;padding:8px 12px;border-radius:8px;color:#042028;cursor:pointer;font-weight:700}
+    button.secondary{background:transparent;color:var(--accent);border:1px solid rgba(126,231,199,0.12)}
+    .output{background:#021823;color:#c9fff1;padding:10px;border-radius:8px;margin-top:10px;min-height:64px;font-family:ui-monospace,monospace;white-space:pre-wrap}
+    .small{font-size:12px;color:var(--muted)}
+    @media(min-width:900px){ .grid{grid-template-columns:repeat(2,1fr)} }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>JavaScript — Advanced Concepts (Interactive)</h1>
+        <p class="lead">Closures · Prototypes · Classes · this · Promises/Async · Fetch API · ES6+ · Modules · OOP · Execution Context · Call Stack · Memory · Event Loop · Web APIs · JSON · Storage · Cookies</p>
+      </div>
+    </header>
+
+    <main class="grid">
+
+      <!-- CLOSURES -->
+      <section class="card">
+        <h2>Closures</h2>
+        <p class="desc">A closure is a function that remembers the lexical environment where it was created. Useful for data privacy and factories.</p>
+        <pre><code>// counter factory: closure keeps `count` private
+function makeCounter(init = 0) {
+  let count = init;
+  return {
+    inc() { count++; return count; },
+    dec() { count--; return count; },
+    value() { return count; }
+  };
+}
+const c = makeCounter(5);
+</code></pre>
+        <div class="row">
+          <button onclick="runClosures()">Run closure demo</button>
+          <button class="secondary" onclick="clearOutput('out-closure')">Clear</button>
+        </div>
+        <div id="out-closure" class="output">Click "Run closure demo".</div>
+      </section>
+
+      <!-- PROTOTYPES -->
+      <section class="card">
+        <h2>Prototypes</h2>
+        <p class="desc">All objects inherit from a prototype. Use prototypes to share methods across instances.</p>
+        <pre><code>// constructor + prototype
+function Person(name) {
+  this.name = name;
+}
+Person.prototype.greet = function() {
+  return `Hi, I'm ${this.name}`;
+};
+const p = new Person('Maya');
+</code></pre>
+        <div class="row">
+          <button onclick="runPrototypes()">Run prototype demo</button>
+          <button class="secondary" onclick="clearOutput('out-proto')">Clear</button>
+        </div>
+        <div id="out-proto" class="output">Click to run prototype demo.</div>
+      </section>
+
+      <!-- CLASSES & this -->
+      <section class="card">
+        <h2>Classes & <code>this</code></h2>
+        <p class="desc">ES6 classes are syntactic sugar over prototypes. <code>this</code> depends on how a function is called.</p>
+        <pre><code>class Animal {
+  constructor(name){ this.name = name; }
+  speak(){ return `${this.name} makes a noise`; }
+}
+const a = new Animal('Dog');
+
+// `this` example: bound vs unbound
+const obj = { x: 10, getX(){ return this.x; } };
+const unbound = obj.getX; // calling unbound loses `this`
+</code></pre>
+        <div class="row">
+          <button onclick="runClassesThis()">Run classes & this demo</button>
+          <button class="secondary" onclick="clearOutput('out-class')">Clear</button>
+        </div>
+        <div id="out-class" class="output">Click to run classes & this demo.</div>
+      </section>
+
+      <!-- PROMISES -->
+      <section class="card">
+        <h2>Promises</h2>
+        <p class="desc">Promises represent future values. Use <code>.then</code> / <code>.catch</code> or <code>async/await</code>.</p>
+        <pre><code>// create a promise which resolves after a delay
+function delay(ms, value) {
+  return new Promise((resolve) => setTimeout(() => resolve(value), ms));
+}
+</code></pre>
+        <div class="row">
+          <button onclick="runPromises()">Run promise demo</button>
+          <button class="secondary" onclick="clearOutput('out-promise')">Clear</button>
+        </div>
+        <div id="out-promise" class="output">Click to run promise demo.</div>
+      </section>
+
+      <!-- ASYNC / AWAIT & FETCH -->
+      <section class="card">
+        <h2>Async / Await & Fetch API</h2>
+        <p class="desc"><code>async/await</code> is syntactic sugar over promises. <code>fetch</code> calls network resources (CORS applies).</p>
+        <pre><code>// sample async function to fetch a JSON resource
+async function fetchTodo() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+  const json = await res.json();
+  return json;
+}
+</code></pre>
+        <div class="row">
+          <button onclick="runFetch()">Fetch demo (jsonplaceholder)</button>
+          <button class="secondary" onclick="clearOutput('out-fetch')">Clear</button>
+        </div>
+        <div id="out-fetch" class="output">Click to fetch a sample TODO (requires network).</div>
+      </section>
+
+      <!-- ES6+ FEATURES -->
+      <section class="card">
+        <h2>ES6+ Features</h2>
+        <p class="desc">Spread/rest, destructuring, default parameters, template literals, arrow functions, Maps & Sets — concise and powerful.</p>
+        <pre><code>// examples: destructuring, spread/rest, map/set
+const arr = [1,2,3];
+const [a,b,...rest] = arr;
+const obj = {x:1,y:2};
+const copy = {...obj, z:3};
+const m = new Map([['k','v']]);
+const s = new Set([1,1,2]);
+</code></pre>
+        <div class="row">
+          <button onclick="runEs6()">Run ES6 features demo</button>
+          <button class="secondary" onclick="clearOutput('out-es6')">Clear</button>
+        </div>
+        <div id="out-es6" class="output">Click to run ES6+ demo.</div>
+      </section>
+
+      <!-- MODULES -->
+      <section class="card">
+        <h2>Modules</h2>
+        <p class="desc">ES modules are loaded with <code>type="module"</code>. Below we dynamically create a module and import it.</p>
+        <pre><code>// dynamic module demo uses a blob (no separate file)
+</code></pre>
+        <div class="row">
+          <button onclick="runModule()">Run module demo</button>
+          <button class="secondary" onclick="clearOutput('out-mod')">Clear</button>
+        </div>
+        <div id="out-mod" class="output">Click to run module demo (creates a module blob).</div>
+      </section>
+
+      <!-- OOP & Execution Context -->
+      <section class="card">
+        <h2>OOP Concepts · Execution Context · Call Stack · Event Loop</h2>
+        <p class="desc">Objects, encapsulation, prototype inheritance. Execution context = variable environment for running code. Event loop handles async callbacks.</p>
+        <pre><code>// Call stack vs event loop demo:
+console.log('start');
+setTimeout(()=> console.log('timeout 0'),0);
+Promise.resolve().then(()=> console.log('promise then'));
+console.log('end');
+// Expected order: start, end, promise then, timeout 0
+</code></pre>
+        <div class="row">
+          <button onclick="runEventLoop()">Run event loop demo</button>
+          <button class="secondary" onclick="clearOutput('out-loop')">Clear</button>
+        </div>
+        <div id="out-loop" class="output">Click to run event loop demo and inspect ordering.</div>
+      </section>
+
+      <!-- MEMORY MANAGEMENT & WEB APIS -->
+      <section class="card">
+        <h2>Memory Management · Web APIs</h2>
+        <p class="desc">JS uses garbage collection (reachable vs unreachable). Web APIs include localStorage, sessionStorage, cookies, navigator, timers, DOM APIs.</p>
+        <pre><code>// JSON and storage examples shown below
+const sample = {name:'Kiran', age:30};
+const text = JSON.stringify(sample);
+const parsed = JSON.parse(text);
+</code></pre>
+        <div class="row">
+          <button onclick="runStorage()">Run JSON & Storage demo</button>
+          <button class="secondary" onclick="clearOutput('out-storage')">Clear</button>
+        </div>
+        <div id="out-storage" class="output">Click to run JSON + storage demo (uses local/session storage & cookies).</div>
+      </section>
+
+    </main>
+
+    <footer style="color:var(--muted);margin-top:18px;font-size:13px">
+      Tip: Open Developer Console to see more logs. Network access is required for fetch demo. Modules demo uses a dynamically-created module blob.
+    </footer>
+  </div>
+
+  <script>
+    // helper for printing
+    function print(id, ...vals){
+      const el = document.getElementById(id);
+      el.textContent = vals.map(v => {
+        try { return (typeof v === 'string') ? v : JSON.stringify(v, null, 2); }
+        catch(e) { return String(v); }
+      }).join('\\n\\n');
+    }
+    function clearOutput(id){ document.getElementById(id).textContent = ''; }
+
+    // CLOSURES
+    function runClosures(){
+      function makeCounter(init = 0) {
+        let count = init;
+        return {
+          inc() { count++; return count; },
+          dec() { count--; return count; },
+          value() { return count; }
+        };
+      }
+      const c1 = makeCounter(1);
+      const c2 = makeCounter(100);
+      const out = [
+        'c1 initial: ' + c1.value(),
+        'c1 inc => ' + c1.inc(),
+        'c1 inc => ' + c1.inc(),
+        'c2 initial: ' + c2.value(),
+        'c2 dec => ' + c2.dec()
+      ];
+      print('out-closure', out);
+    }
+
+    // PROTOTYPES
+    function runPrototypes(){
+      function Person(name, role){
+        this.name = name;
+        this.role = role;
+      }
+      Person.prototype.describe = function(){ return `${this.name} — ${this.role}`; };
+      const p = new Person('Neha','Developer');
+      // show prototype chain check
+      const protoInfo = {
+        describe: p.describe(),
+        'p.__proto__ === Person.prototype': p.__proto__ === Person.prototype,
+        'Person.prototype.constructor === Person': Person.prototype.constructor === Person
+      };
+      print('out-proto', protoInfo);
+    }
+
+    // CLASSES & THIS
+    function runClassesThis(){
+      class Animal {
+        constructor(name) { this.name = name; }
+        speak() { return `${this.name} makes a noise`; }
+      }
+      const a = new Animal('Cat');
+      const obj = { x: 42, getX(){ return this.x; } };
+      const unbound = obj.getX;
+      const bound = obj.getX.bind(obj);
+      const output = {
+        classSpeak: a.speak(),
+        objGetX_direct: obj.getX(),
+        objGetX_unbound_call: (function(){ try { return unbound(); } catch(e){ return 'error - lost this'; } })(),
+        boundCall: bound()
+      };
+      print('out-class', output);
+    }
+
+    // PROMISES
+    function runPromises(){
+      function delay(ms, value) {
+        return new Promise((resolve) => setTimeout(() => resolve(value), ms));
+      }
+      Promise.all([delay(300, 'A'), delay(100, 'B'), delay(200, 'C')])
+        .then(vals => print('out-promise', 'Promise.all order: ' + vals.join(', ')))
+        .catch(err => print('out-promise', 'Error: ' + err));
+      // also show rejected promise handling
+      const p = new Promise((res, rej) => setTimeout(() => rej(new Error('fail')), 150));
+      p.catch(err => setTimeout(()=> print('out-promise', 'Caught rejection: ' + err.message), 200));
+    }
+
+    // ASYNC / AWAIT & FETCH
+    async function runFetch(){
+      print('out-fetch', 'Fetching...');
+      try {
+        // jsonplaceholder is a public demo API
+        const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+        if (!res.ok) throw new Error('Network response not ok: ' + res.status);
+        const json = await res.json();
+        print('out-fetch', 'Fetched JSON:', json);
+      } catch (err){
+        print('out-fetch', 'Fetch error: ' + err.message);
+      }
+    }
+
+    // ES6+ FEATURES
+    function runEs6(){
+      const arr = [1,2,3];
+      const [first, second, ...rest] = arr;
+      const obj = { x:1, y:2 };
+      const copy = { ...obj, z: 3 };
+      const m = new Map([['k', 'v']]);
+      const s = new Set([1,1,2]);
+      const output = {
+        destructuring: { first, second, rest },
+        spread_copy: copy,
+        map_size: m.size,
+        set_values: Array.from(s),
+        templateLiteral: `first + second = ${first + second}`
+      };
+      print('out-es6', output);
+    }
+
+    // MODULE demo (dynamic blob module)
+    async function runModule(){
+      // create module code as a blob
+      const moduleCode = `
+        export function greet(name) { return 'Hello from module, ' + name; }
+        export const PI = 3.14159;
+      `;
+      const blob = new Blob([moduleCode], { type: 'text/javascript' });
+      const url = URL.createObjectURL(blob);
+      try {
+        const mod = await import(url);
+        const result = { greet: mod.greet('Dev'), PI: mod.PI };
+        print('out-mod', result);
+      } catch (err) {
+        print('out-mod', 'Module import error: ' + err.message);
+      } finally {
+        URL.revokeObjectURL(url);
+      }
+    }
+
+    // EVENT LOOP & Call Stack demo
+    function runEventLoop(){
+      const logs = [];
+      function log(v){ logs.push(v); }
+      log('start');
+      setTimeout(() => log('timeout 0'), 0);
+      Promise.resolve().then(() => log('promise then'));
+      log('end');
+      // display after a short delay to allow microtasks to run
+      setTimeout(() => print('out-loop', logs), 50);
+    }
+
+    // STORAGE, JSON, COOKIES demo
+    function runStorage(){
+      // JSON stringify/parse
+      const sample = { name: 'Kiran', age: 30, tags: ['js','web'] };
+      const txt = JSON.stringify(sample);
+      const parsed = JSON.parse(txt);
+
+      // localStorage / sessionStorage
+      try {
+        localStorage.setItem('demo_sample', txt);
+        sessionStorage.setItem('demo_session', 'session-data');
+      } catch(e) {
+        // storage might be blocked in some environments
+      }
+
+      // cookies (simple)
+      document.cookie = 'demo_cookie=hello_js; path=/; max-age=3600';
+
+      // weak references note (can't directly inspect GC)
+      const output = {
+        json_text: txt,
+        parsed_example: parsed,
+        localStorage_get: (localStorage.getItem('demo_sample') || 'n/a'),
+        sessionStorage_get: (sessionStorage.getItem('demo_session') || 'n/a'),
+        cookie_contains: document.cookie
+      };
+      print('out-storage', output);
+    }
+
+    // initialization: friendly notes
+    document.addEventListener('DOMContentLoaded', () => {
+      const outs = ['out-closure','out-proto','out-class','out-promise','out-fetch','out-es6','out-mod','out-loop','out-storage'];
+      outs.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = 'Click a button to run the example — output appears here.';
+      });
+    });
+  </script>
+</body>
+</html>

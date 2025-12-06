@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Core Concepts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+      background: #f7f7f7;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    pre {
+      background: #2d2d2d;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    .section {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript CORE Concepts</h1>
+
+  <div class="section">
+    <h2>1. Hoisting</h2>
+    <p>Hoisting allows variable and function declarations to be moved to the top of their scope during the compile phase.</p>
+    <pre><code>// Example
+console.log(a); // undefined
+var a = 10;
+
+hello(); // Works
+function hello() {
+  console.log("Hello World");
+}</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>2. Scope</h2>
+    <p>Scope defines where variables and functions are accessible — Global, Function, or Block scope.</p>
+    <pre><code>let x = 10;
+if (true) {
+  let x = 20; // block scoped
+  console.log(x); // 20
+}
+console.log(x); // 10</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>3. Callbacks</h2>
+    <p>A callback is a function passed as an argument to another function.</p>
+    <pre><code>function greet(name, callback) {
+  console.log("Hello " + name);
+  callback();
+}
+function done() {
+  console.log("Greeting completed");
+}
+greet("Arshad", done);</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>4. Events</h2>
+    <p>Events respond to user interactions like clicks, keypress, mouseover, etc.</p>
+    <pre><code>document.getElementById("btn").addEventListener("click", () => {
+  alert("Button Clicked!");
+});</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>5. Event Bubbling</h2>
+    <p>Event bubbling occurs when an event triggers from the deepest target element and bubbles upward.</p>
+    <pre><code>&lt;div id="parent"&gt;
+  &lt;button id="child"&gt;Click Me&lt;/button&gt;
+&lt;/div&gt;
+
+<script>
+document.getElementById("parent").addEventListener("click", () => {
+  console.log("Parent Clicked");
+});
+
+document.getElementById("child").addEventListener("click", () => {
+  console.log("Child Clicked");
+});
+</script></code></pre>
+  </div>
+
+  <div class="section">
+    <h2>6. Debouncing</h2>
+    <p>Debouncing ensures a function runs only after a certain time has passed without it being called again.</p>
+    <pre><code>function debounce(fn, delay) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
+const handleInput = debounce(() => console.log("Typing stopped"), 500);
+</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>7. Throttling</h2>
+    <p>Throttling ensures a function runs at most once in a specified time interval.</p>
+    <pre><code>function throttle(fn, limit) {
+  let wait = false;
+  return function () {
+    if (!wait) {
+      fn();
+      wait = true;
+      setTimeout(() => wait = false, limit);
+    }
+  };
+}
+window.addEventListener("scroll", throttle(() => console.log("Scroll event"), 1000));</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>8. Timers</h2>
+    <p>JavaScript provides <code>setTimeout</code> and <code>setInterval</code> for handling timed actions.</p>
+    <pre><code>setTimeout(() => console.log("Runs after 2 seconds"), 2000);
+
+let count = 0;
+setInterval(() => {
+  count++;
+  console.log("Counter: " + count);
+}, 1000);</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>9. Error Handling</h2>
+    <p>Error handling allows developers to catch and handle errors gracefully using try-catch.</p>
+    <pre><code>try {
+  let num = a + 10; // error
+} catch (err) {
+  console.log("Error occurred:", err.message);
+} finally {
+  console.log("Execution complete");
+}</code></pre>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+complete portfolio page with:
+
+Dynamic navigation
+
+Interactive project section (filter projects or open project details)
+
+Contact form validation
+
+Dark/light mode toggle
+
+Here’s the full HTML + CSS + JavaScript portfolio:

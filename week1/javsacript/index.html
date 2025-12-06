@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Full Notes (Basic → Advanced)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background: #222;
+            color: #0f0;
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        .section {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript Full Notes (Basic → Advanced)</h1>
+<p>All concepts with code examples inside a single HTML page.</p>
+
+<!-- 1 VARIABLES -->
+<div class="section">
+<h2>1. Variables</h2>
+<pre>
+// var – function scoped
+var name = "John";
+
+// let – block scoped
+let age = 20;
+
+// const – cannot be changed
+const pi = 3.14;
+</pre>
+</div>
+
+<!-- 2 DATA TYPES -->
+<div class="section">
+<h2>2. Data Types</h2>
+<pre>
+// Primitive types
+let a = "Hello";
+let b = 42;
+let c = true;
+let d;            // undefined
+let e = null;
+
+// Reference types
+let obj = {name: "Arshad", age: 20};
+let arr = [10, 20, 30];
+</pre>
+</div>
+
+<!-- 3 OPERATORS -->
+<div class="section">
+<h2>3. Operators</h2>
+<pre>
+// Arithmetic
+let x = 5 + 3;  
+
+// Comparison
+5 == "5";    // true
+5 === "5";   // false
+
+// Logical
+true && false; 
+</pre>
+</div>
+
+<!-- 4 CONDITIONALS -->
+<div class="section">
+<h2>4. Conditionals</h2>
+<pre>
+// if / else
+let age = 18;
+if (age >= 18) {
+    console.log("Adult");
+} else {
+    console.log("Minor");
+}
+
+// switch
+let day = 2;
+switch(day) {
+    case 1: console.log("Monday"); break;
+    case 2: console.log("Tuesday"); break;
+    default: console.log("Other");
+}
+</pre>
+</div>
+
+<!-- 5 LOOPS -->
+<div class="section">
+<h2>5. Loops</h2>
+<pre>
+// for loop
+for (let i = 1; i <= 5; i++) {
+    console.log(i);
+}
+
+// while loop
+let x = 1;
+while(x <= 3) {
+    console.log(x);
+    x++;
+}
+
+// for...of
+for (let n of [10,20,30]) {
+    console.log(n);
+}
+
+// for...in
+let person = {name:"Ava", age:22};
+for (let key in person) {
+    console.log(key, person[key]);
+}
+</pre>
+</div>
+
+<!-- 6 FUNCTIONS -->
+<div class="section">
+<h2>6. Functions</h2>
+<pre>
+// Normal function
+function add(a, b) {
+    return a + b;
+}
+
+// Arrow function
+const multiply = (a, b) => a * b;
+
+// Function expression
+const greet = function() {
+    console.log("Hello");
+};
+</pre>
+</div>
+
+<!-- 7 ARRAYS -->
+<div class="section">
+<h2>7. Arrays</h2>
+<pre>
+let nums = [1,2,3];
+
+nums.push(4);   // add to end
+nums.pop();     // remove end
+
+nums.shift();   // remove first
+nums.unshift(0); // add first
+
+nums.map(n => n * 2);
+nums.filter(n => n > 2);
+
+nums.reduce((a,b) => a + b, 0);
+</pre>
+</div>
+
+<!-- 8 OBJECTS -->
+<div class="section">
+<h2>8. Objects</h2>
+<pre>
+let person = {
+    name: "Ravi",
+    age: 25,
+    greet() {
+        console.log("Hi");
+    }
+};
+
+console.log(person.name);
+person.greet();
+</pre>
+</div>
+
+<!-- 9 DOM MANIPULATION -->
+<div class="section">
+<h2>9. DOM Manipulation</h2>
+<p>Try clicking the button below:</p>
+
+<button id="btn">Click Me</button>
+<p id="message"></p>
+
+<pre>
+// Select elements
+document.getElementById("btn");
+document.querySelector(".class");
+
+// Change content
+document.getElementById("message").innerText = "Hello User";
+
+// Events
+document.getElementById("btn").addEventListener("click", () => {
+    document.getElementById("message").innerText = "Button Clicked!";
+});
+</pre>
+</div>
+
+<!-- 10 PROTOTYPES -->
+<div class="section">
+<h2>10. Prototypes</h2>
+<pre>
+function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.sayHi = function() {
+    console.log("Hi " + this.name);
+};
+
+let p = new Person("Arshad");
+p.sayHi();
+</pre>
+</div>
+
+<!-- 11 CLASSES -->
+<div class="section">
+<h2>11. Classes (ES6)</h2>
+<pre>
+class Car {
+    constructor(name) {
+        this.name = name;
+    }
+    start() {
+        console.log(this.name + " started");
+    }
+}
+
+let c = new Car("BMW");
+c.start();
+</pre>
+</div>
+
+<!-- 12 CLOSURES -->
+<div class="section">
+<h2>12. Closures</h2>
+<pre>
+function outer() {
+    let count = 0;
+    return function() {
+        count++;
+        console.log(count);
+    };
+}
+
+let inc = outer();
+inc(); // 1
+inc(); // 2
+</pre>
+</div>
+
+<!-- 13 PROMISES -->
+<div class="section">
+<h2>13. Promises</h2>
+<pre>
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("Done"), 1000);
+});
+
+promise.then(result => console.log(result));
+</pre>
+</div>
+
+<!-- 14 ASYNC AWAIT -->
+<div class="section">
+<h2>14. Async / Await</h2>
+<pre>
+async function getData() {
+    let response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+    let data = await response.json();
+    console.log(data);
+}
+
+getData();
+</pre>
+</div>
+
+<!-- 15 SPREAD & REST -->
+<div class="section">
+<h2>15. Spread & Rest</h2>
+<pre>
+// Spread
+let nums1 = [1,2,3];
+let nums2 = [...nums1, 4,5];
+
+// Rest
+function sum(...numbers) {
+    return numbers.reduce((a,b)=>a+b);
+}
+</pre>
+</div>
+
+<!-- 16 DESTRUCTURING -->
+<div class="section">
+<h2>16. Destructuring</h2>
+<pre>
+let user = {name:"Arjun", age:23};
+let {name, age} = user;
+
+let arr = [10,20,30];
+let [a, b, c] = arr;
+</pre>
+</div>
+
+<!-- 17 LOCAL STORAGE -->
+<div class="section">
+<h2>17. LocalStorage</h2>
+<pre>
+localStorage.setItem("name", "Arshad");
+localStorage.getItem("name");
+</pre>
+</div>
+
+</body>
+</html>
