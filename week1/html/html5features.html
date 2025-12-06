@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive HTML5 Features Demo</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    header, footer {
+        background: #333;
+        color: white;
+        padding: 15px;
+        text-align: center;
+    }
+    main {
+        max-width: 1000px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+    }
+    h2 {
+        color: #333;
+        margin-top: 0;
+    }
+    nav {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    nav button {
+        margin: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border: 1px solid #333;
+        border-radius: 5px;
+        background: #f8f8f8;
+    }
+    nav button.active {
+        background: #333;
+        color: #fff;
+    }
+    section {
+        display: none;
+    }
+    section.active {
+        display: block;
+    }
+    pre {
+        background: #eee;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+    canvas {
+        border: 1px solid #000;
+        display: block;
+        margin: 10px 0;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Interactive HTML5 Features Demo</h1>
+    <p>Click the buttons below to view each HTML5 feature with live example and code snippet.</p>
+</header>
+
+<main>
+    <nav>
+        <button class="tab-btn active" data-target="semantic">Semantic Elements</button>
+        <button class="tab-btn" data-target="forms">Forms</button>
+        <button class="tab-btn" data-target="multimedia">Multimedia</button>
+        <button class="tab-btn" data-target="graphics">Graphics</button>
+        <button class="tab-btn" data-target="interactive">Interactive</button>
+        <button class="tab-btn" data-target="storage">Storage & Offline</button>
+        <button class="tab-btn" data-target="accessibility">Accessibility</button>
+        <button class="tab-btn" data-target="deprecated">Deprecated</button>
+    </nav>
+
+    <!-- Semantic Elements -->
+    <section id="semantic" class="active">
+        <h2>Semantic Elements</h2>
+        <article>
+            <header>
+                <h3>Article Example</h3>
+                <p>Published on <time datetime="2025-12-06">December 6, 2025</time></p>
+            </header>
+            <p>This is an example of &lt;article&gt; in HTML5.</p>
+            <footer>Author: Your Name</footer>
+        </article>
+        <aside>
+            <h3>Aside Example</h3>
+            <p>This is additional content using &lt;aside&gt;.</p>
+        </aside>
+        <figure>
+            <img src="image.jpg" alt="Example Image" width="200">
+            <figcaption>Figure Caption Example</figcaption>
+        </figure>
+        <pre>
+&lt;article&gt;
+    &lt;header&gt;&lt;h3&gt;Article Example&lt;/h3&gt;&lt;/header&gt;
+    &lt;p&gt;Content here&lt;/p&gt;
+&lt;/article&gt;
+&lt;aside&gt;Sidebar content&lt;/aside&gt;
+&lt;figure&gt;&lt;img src="image.jpg"&gt;&lt;figcaption&gt;Caption&lt;/figcaption&gt;&lt;/figure&gt;
+        </pre>
+    </section>
+
+    <!-- Forms -->
+    <section id="forms">
+        <h2>HTML5 Forms</h2>
+        <form>
+            <label>Name:</label>
+            <input type="text" placeholder="Enter name" required><br><br>
+            <label>Email:</label>
+            <input type="email" placeholder="Enter email" required><br><br>
+            <label>Date of Birth:</label>
+            <input type="date"><br><br>
+            <label>Color:</label>
+            <input type="color"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+        <pre>
+&lt;form&gt;
+    &lt;input type="text" required placeholder="Name"&gt;
+    &lt;input type="email" required placeholder="Email"&gt;
+    &lt;input type="date"&gt;
+    &lt;input type="color"&gt;
+&lt;/form&gt;
+        </pre>
+    </section>
+
+    <!-- Multimedia -->
+    <section id="multimedia">
+        <h2>Multimedia</h2>
+        <h3>Audio</h3>
+        <audio controls>
+            <source src="audio.mp3" type="audio/mpeg">
+        </audio>
+        <h3>Video</h3>
+        <video width="320" height="240" controls>
+            <source src="video.mp4" type="video/mp4">
+        </video>
+        <pre>
+&lt;audio controls&gt;&lt;source src="audio.mp3"&gt;&lt;/audio&gt;
+&lt;video controls&gt;&lt;source src="video.mp4"&gt;&lt;/video&gt;
+        </pre>
+    </section>
+
+    <!-- Graphics -->
+    <section id="graphics">
+        <h2>Graphics & Canvas</h2>
+        <canvas id="myCanvas" width="300" height="150"></canvas>
+        <pre>
+&lt;canvas id="myCanvas" width="300" height="150"&gt;&lt;/canvas&gt;
+        </pre>
+    </section>
+
+    <!-- Interactive Elements -->
+    <section id="interactive">
+        <h2>Interactive Elements</h2>
+        <details>
+            <summary>Click to expand</summary>
+            <p>This is hidden content revealed using &lt;details&gt; and &lt;summary&gt;.</p>
+        </details>
+        <p>Highlighted text: <mark>Example</mark></p>
+        <progress value="50" max="100"></progress>
+        <meter value="0.7">70%</meter>
+        <pre>
+&lt;details&gt;&lt;summary&gt;Click&lt;/summary&gt;&lt;p&gt;Hidden content&lt;/p&gt;&lt;/details&gt;
+&lt;mark&gt;Highlighted text&lt;/mark&gt;
+&lt;progress value="50" max="100"&gt;&lt;/progress&gt;
+&lt;meter value="0.7"&gt;70%&lt;/meter&gt;
+        </pre>
+    </section>
+
+    <!-- Storage & Offline -->
+    <section id="storage">
+        <h2>Storage & Offline</h2>
+        <p>HTML5 supports localStorage and sessionStorage.</p>
+        <pre>
+localStorage.setItem('key', 'value');
+sessionStorage.setItem('key', 'value');
+        </pre>
+    </section>
+
+    <!-- Accessibility & Mobile -->
+    <section id="accessibility">
+        <h2>Accessibility & Mobile</h2>
+        <p>Use semantic tags and viewport meta for responsive design.</p>
+        <pre>
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+        </pre>
+    </section>
+
+    <!-- Deprecated -->
+    <section id="deprecated">
+        <h2>Deprecated Features</h2>
+        <p>Old tags like &lt;center&gt;, &lt;font&gt;, &lt;big&gt;, &lt;strike&gt; are deprecated.</p>
+        <pre>
+&lt;center&gt;Text&lt;/center&gt;
+&lt;font color="red"&gt;Text&lt;/font&gt;
+&lt;big&gt;Text&lt;/big&gt;
+&lt;strike&gt;Text&lt;/strike&gt;
+        </pre>
+    </section>
+
+</main>
+
+<footer>
+    &copy; 2025 Interactive HTML5 Demo
+</footer>
+
+<script>
+    // Tab functionality
+    const buttons = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('section');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => sec.classList.remove('active'));
+            document.getElementById(btn.dataset.target).classList.add('active');
+        });
+    });
+
+    // Canvas drawing example
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = "lightblue";
+    ctx.fillRect(10, 10, 100, 100);
+    ctx.beginPath();
+    ctx.arc(150, 75, 50, 0, 2 * Math.PI);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.stroke();
+</script>
+
+</body>
+</html>

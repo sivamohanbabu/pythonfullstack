@@ -1,0 +1,29 @@
+Final Lab Exercise: Build a Mini Web Page
+
+Objective: Apply all HTML basics learned over the week.
+
+Task:
+
+Create a web page for a small business or personal portfolio.
+
+Include the following:
+
+Proper HTML structure.
+
+Header with site title and navigation menu.
+
+Main section with:
+
+At least one article or section.
+
+A table displaying data (e.g., product prices or schedule).
+
+A form for user feedback.
+
+Images with alt text.
+
+Links to social media or other pages.
+
+Footer with copyright info.
+
+Use semantic tags wherever appropriate.

@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Portfolio Web Page</title>
+
+    <!-- Metadata for SEO -->
+    <meta name="description" content="Advanced portfolio website showcasing web development projects.">
+    <meta name="keywords" content="HTML, portfolio, web development, projects, advanced HTML">
+    <meta name="author" content="Your Name">
+</head>
+<body>
+
+    <!-- Header with site title and navigation -->
+    <header>
+        <h1>My Advanced Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <main>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I am a web developer learning advanced HTML features. I enjoy creating modern and semantic websites.</p>
+
+            <!-- Image with figcaption -->
+            <figure>
+                <img src="profile.jpg" alt="Profile Picture" width="200">
+                <figcaption>My Profile Picture</figcaption>
+            </figure>
+
+            <!-- Highlighted text -->
+            <p>I love <mark>HTML5 semantic elements</mark> and creating interactive web pages.</p>
+        </section>
+
+        <!-- Projects Section with Advanced Table -->
+        <section id="projects">
+            <h2>My Projects</h2>
+            <table border="1">
+                <caption>Project Timeline</caption>
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Portfolio Website</td>
+                        <td>2025-01-01</td>
+                        <td>2025-03-01</td>
+                        <td>Completed</td>
+                    </tr>
+                    <tr>
+                        <td>ToDo App</td>
+                        <td>2025-04-01</td>
+                        <td>2025-06-01</td>
+                        <td>In Progress</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Total Projects</td>
+                        <td>2</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <!-- Multimedia Section -->
+        <section id="media">
+            <h2>Multimedia</h2>
+
+            <!-- Audio Example -->
+            <p>Listen to my project demo:</p>
+            <audio controls>
+                <source src="audio.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+
+            <!-- Video Example -->
+            <p>Watch my project walkthrough:</p>
+            <video width="320" height="240" controls>
+                <source src="video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+
+        <!-- Contact Section with Advanced Form -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <form action="#" method="post">
+
+                <!-- Text input with required and minlength -->
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required minlength="3" placeholder="Enter your name"><br><br>
+
+                <!-- Email input -->
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required placeholder="Enter your email"><br><br>
+
+                <!-- Date input -->
+                <label for="dob">Date of Birth:</label><br>
+                <input type="date" id="dob" name="dob"><br><br>
+
+                <!-- Color input -->
+                <label for="color">Favorite Color:</label><br>
+                <input type="color" id="color" name="color"><br><br>
+
+                <!-- Number input -->
+                <label for="quantity">Number of Projects:</label><br>
+                <input type="number" id="quantity" name="quantity" min="1" max="10"><br><br>
+
+                <!-- Range input -->
+                <label for="satisfaction">Satisfaction Level:</label><br>
+                <input type="range" id="satisfaction" name="satisfaction" min="0" max="100"><br><br>
+
+                <!-- Textarea for message -->
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" cols="30" placeholder="Your message here"></textarea><br><br>
+
+                <!-- Submit button -->
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+        <!-- Collapsible content example -->
+        <section id="extra">
+            <h2>More Information</h2>
+            <details>
+                <summary>Click to see additional info</summary>
+                <p>This is extra content that is hidden until the user clicks on "Click to see additional info".</p>
+            </details>
+        </section>
+
+    </main>
+
+    <!-- Footer with social links -->
+    <footer>
+        <p>Follow me on:</p>
+        <ul>
+            <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li><a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+            <li><a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+        <p>&copy; 2025 My Advanced Portfolio</p>
+    </footer>
+
+    <!-- HTML Template Example -->
+    <template id="card-template">
+        <div class="card">
+            <h3>Card Title</h3>
+            <p>Reusable card content for projects or info.</p>
+        </div>
+    </template>
+
+</body>
+</html>
+<!-- 
+Features included in this single HTML file:
+
+Header & Navigation
+
+Semantic Sections: <section>, <article>, <figure>, <figcaption>
+
+Table with <thead>, <tbody>, <tfoot>, colspan
+
+Forms with advanced input types (email, date, color, number, range) and attributes (required, min, max, placeholder)
+
+Multimedia: <audio> and <video>
+
+Collapsible content: <details> and <summary>
+
+Highlighted text: <mark>
+
+Footer with social links using target="_blank" and rel="noopener noreferrer"
+
+HTML template: <template> for reusable content
+
+Metadata for SEO -->

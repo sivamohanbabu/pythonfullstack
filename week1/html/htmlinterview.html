@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Interview Questions & Practice</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+    header, footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 15px;
+    }
+    main {
+        max-width: 1000px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    h2 {
+        color: #333;
+        margin-top: 0;
+    }
+    nav {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    nav button {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid #333;
+        background-color: #f8f8f8;
+    }
+    nav button.active {
+        background-color: #333;
+        color: #fff;
+    }
+    section {
+        display: none;
+    }
+    section.active {
+        display: block;
+    }
+    h3 {
+        margin: 10px 0 5px;
+        color: #444;
+    }
+    p, li {
+        margin: 5px 0;
+    }
+    pre {
+        background-color: #eee;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>HTML Interview Questions & Practice</h1>
+    <p>Interactive Q&A and practice problems for freshers and experienced developers</p>
+</header>
+
+<main>
+    <nav>
+        <button class="tab-btn active" data-target="freshers">Freshers Q&A</button>
+        <button class="tab-btn" data-target="experienced">Experienced Q&A</button>
+        <button class="tab-btn" data-target="practice">Practice Problems</button>
+    </nav>
+
+    <!-- Freshers Questions -->
+    <section id="freshers" class="active">
+        <h2>Freshers HTML Questions</h2>
+        <h3>1. What is HTML?</h3>
+        <p>HTML (HyperText Markup Language) is the standard markup language for creating web pages.</p>
+
+        <h3>2. What are HTML tags?</h3>
+        <p>Tags are elements in HTML enclosed in angle brackets &lt; &gt;, like &lt;p&gt;, &lt;a&gt;, &lt;h1&gt;.</p>
+
+        <h3>3. Difference between &lt;div&gt; and &lt;span&gt;?</h3>
+        <p>&lt;div&gt; is block-level; &lt;span&gt; is inline.</p>
+
+        <h3>4. Semantic tags in HTML5?</h3>
+        <p>Tags like &lt;header&gt;, &lt;footer&gt;, &lt;article&gt;, &lt;section&gt; that give meaning to content.</p>
+
+        <h3>5. Difference between HTML4 and HTML5?</h3>
+        <p>HTML5 introduces semantic tags, multimedia support, canvas, offline storage, and new form inputs.</p>
+
+        <h3>6. Purpose of &lt;head&gt; tag?</h3>
+        <p>Contains metadata, links to CSS/JS, and the page title.</p>
+
+        <h3>7. Difference between &lt;ol&gt; and &lt;ul&gt;?</h3>
+        <p>&lt;ol&gt; = ordered list, &lt;ul&gt; = unordered list.</p>
+
+        <h3>8. What is an HTML attribute?</h3>
+        <p>Additional information about an element, e.g., href in &lt;a href="url"&gt;.</p>
+
+        <h3>9. Difference between &lt;strong&gt; and &lt;b&gt;?</h3>
+        <p>&lt;strong&gt; is semantic, &lt;b&gt; is just visual bold.</p>
+
+        <h3>10. Difference between &lt;em&gt; and &lt;i&gt;?</h3>
+        <p>&lt;em&gt; emphasizes text semantically; &lt;i&gt; italicizes text visually.</p>
+        <!-- Add more freshers Q&A as needed -->
+    </section>
+
+    <!-- Experienced Questions -->
+    <section id="experienced">
+        <h2>Experienced HTML Questions</h2>
+        <h3>21. New input types in HTML5?</h3>
+        <p>Email, url, number, date, color, range, tel, search.</p>
+
+        <h3>22. What is &lt;canvas&gt;?</h3>
+        <p>A container for graphics drawn via JavaScript.</p>
+
+        <h3>23. Difference between &lt;section&gt; and &lt;article&gt;?</h3>
+        <p>&lt;section&gt; groups related content; &lt;article&gt; is independent content.</p>
+
+        <h3>24. Difference between &lt;audio&gt; and &lt;video&gt;?</h3>
+        <p>&lt;audio&gt; = sound; &lt;video&gt; = video content.</p>
+
+        <h3>25. LocalStorage vs sessionStorage?</h3>
+        <p>localStorage persists until cleared; sessionStorage persists until tab closes.</p>
+
+        <h3>26. What are data-* attributes?</h3>
+        <p>Custom attributes to store data, e.g., data-id="123".</p>
+
+        <h3>27. &lt;progress&gt; vs &lt;meter&gt;?</h3>
+        <p>&lt;progress&gt; shows task progress; &lt;meter&gt; shows measurement within a range.</p>
+
+        <h3>28. Async vs defer in &lt;script&gt;?</h3>
+        <p>Async loads JS asynchronously; defer waits until HTML parsing completes.</p>
+
+        <h3>29. Purpose of &lt;template&gt;?</h3>
+        <p>Holds content for JS to render later; not displayed by default.</p>
+
+        <h3>30. Deprecated HTML tags?</h3>
+        <p>&lt;center&gt;, &lt;font&gt;, &lt;big&gt;, &lt;strike&gt;, &lt;frame&gt;.</p>
+        <!-- Add more experienced Q&A as needed -->
+    </section>
+
+    <!-- Practice Problems -->
+    <section id="practice">
+        <h2>HTML Practice Problems</h2>
+        <ol>
+            <li>Create a personal portfolio page using semantic HTML5 tags.</li>
+            <li>Create a form that validates email and number input using HTML5 attributes.</li>
+            <li>Create a table showing product details with &lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;.</li>
+            <li>Embed audio and video files in a webpage.</li>
+            <li>Draw a circle and rectangle using &lt;canvas&gt;.</li>
+            <li>Create a collapsible FAQ section using &lt;details&gt; and &lt;summary&gt;.</li>
+            <li>Highlight text using &lt;mark&gt; and show deleted text using &lt;del&gt;.</li>
+            <li>Store user input in localStorage and display it on page reload.</li>
+            <li>Make a responsive webpage using &lt;meta viewport&gt; and semantic tags.</li>
+            <li>Create a progress bar showing task completion.</li>
+            <li>Build a navigation menu using &lt;nav&gt; with 3+ links.</li>
+            <li>Embed an image with &lt;figure&gt; and &lt;figcaption&gt;.</li>
+            <li>Use &lt;meter&gt; to show system or CPU usage (simulation).</li>
+            <li>Use new HTML5 input types: date, color, range, tel.</li>
+            <li>Create a template card using &lt;template&gt; and clone it using JS.</li>
+        </ol>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 HTML Interview Practice
+</footer>
+
+<script>
+    // Tab navigation
+    const buttons = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('section');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            sections.forEach(sec => sec.classList.remove('active'));
+            document.getElementById(btn.dataset.target).classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML4 vs HTML5 Features</title>
+</head>
+<body>
+
+    <!-- Page Header -->
+    <header>
+        <h1>HTML4 vs HTML5 Features</h1>
+        <p>This page shows the main features of HTML4 and HTML5 with examples.</p>
+    </header>
+
+    <!-- HTML4 Section -->
+    <section id="html4">
+        <h2>HTML4 Features</h2>
+        <p>HTML4 was the standard before HTML5. It has the following features:</p>
+        <ul>
+            <li>Structuring content with <strong>&lt;div&gt;</strong> and <strong>&lt;span&gt;</strong> instead of semantic tags</li>
+            <li>Tables for layout as well as data</li>
+            <li>Forms with basic input types: text, password, checkbox, radio, submit</li>
+            <li>Limited multimedia support (requires plugins like Flash for audio/video)</li>
+            <li>Limited semantic elements; mostly structural tags like &lt;div&gt; and &lt;span&gt;</li>
+            <li>Frames and framesets for dividing the page</li>
+        </ul>
+
+        <!-- HTML4 Form Example -->
+        <h3>HTML4 Form Example</h3>
+        <form action="#" method="post">
+            <label for="name4">Name:</label>
+            <input type="text" id="name4" name="name"><br><br>
+            <label for="email4">Email:</label>
+            <input type="text" id="email4" name="email"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <!-- HTML4 Table Example -->
+        <h3>HTML4 Table Example</h3>
+        <table border="1">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+            </tr>
+            <tr>
+                <td>Apple</td>
+                <td>$1</td>
+            </tr>
+            <tr>
+                <td>Orange</td>
+                <td>$2</td>
+            </tr>
+        </table>
+    </section>
+
+    <hr>
+
+    <!-- HTML5 Section -->
+    <section id="html5">
+        <h2>HTML5 Features</h2>
+        <p>HTML5 is the latest standard and includes new features:</p>
+        <ul>
+            <li>New semantic tags: &lt;header&gt;, &lt;footer&gt;, &lt;article&gt;, &lt;section&gt;, &lt;aside&gt;</li>
+            <li>Enhanced forms with new input types: email, url, date, color, range, number</li>
+            <li>Multimedia support: &lt;audio&gt; and &lt;video&gt; without plugins</li>
+            <li>Canvas and SVG for drawing and graphics</li>
+            <li>Local storage and offline capabilities (via JavaScript, not HTML-only)</li>
+            <li>Details and summary for collapsible content</li>
+            <li>Improved accessibility and mobile support</li>
+        </ul>
+
+        <!-- HTML5 Form Example -->
+        <h3>HTML5 Form Example</h3>
+        <form action="#" method="post">
+            <label for="name5">Name:</label>
+            <input type="text" id="name5" name="name" required><br><br>
+            <label for="email5">Email:</label>
+            <input type="email" id="email5" name="email" required><br><br>
+            <label for="dob5">Date of Birth:</label>
+            <input type="date" id="dob5" name="dob"><br><br>
+            <label for="color5">Favorite Color:</label>
+            <input type="color" id="color5" name="color"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <!-- HTML5 Multimedia Example -->
+        <h3>HTML5 Multimedia Example</h3>
+        <p>Audio:</p>
+        <audio controls>
+            <source src="audio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio><br><br>
+
+        <p>Video:</p>
+        <video width="320" height="240" controls>
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- HTML5 Semantic Example -->
+        <h3>HTML5 Semantic Example</h3>
+        <article>
+            <header>
+                <h4>Blog Post</h4>
+                <p>Published on <time datetime="2025-12-06">December 6, 2025</time></p>
+            </header>
+            <p>This is an example of an article using HTML5 semantic elements.</p>
+            <footer>
+                <p>Author: Your Name</p>
+            </footer>
+        </article>
+
+        <!-- Collapsible Content -->
+        <details>
+            <summary>Click to read more</summary>
+            <p>This is hidden content shown using HTML5 details/summary.</p>
+        </details>
+
+    </section>
+
+</body>
+</html>
