@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Python Playground — Editor + Snippets (Basic / Core / Advanced)</title>
+<style>
+  :root{
+    --bg:#0b1220; --panel:#071727; --muted:#9fb6c8; --accent:#7ee7c7; --card:#0f1b26;
+    --glass: rgba(255,255,255,0.03);
+  }
+  html,body{height:100%; margin:0; font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;}
+  body{background:linear-gradient(180deg,#041022,#071527); color:#dff6f3;}
+  .app{display:grid; grid-template-columns:1fr 420px; gap:16px; padding:18px; max-width:1300px; margin:0 auto; box-sizing:border-box;}
+  header{grid-column:1/-1; display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:6px;}
+  h1{font-size:18px;margin:0;color:var(--accent)}
+  p.lead{margin:0;color:var(--muted);font-size:13px}
+  .editorCard, .sideCard{background:var(--card); border-radius:12px; padding:12px; box-shadow:0 8px 30px rgba(0,0,0,0.6); border:1px solid var(--glass)}
+  /* Editor */
+  .editorWrap{display:flex; flex-direction:column; height:78vh;}
+  textarea#editor{flex:1; width:100%; resize:vertical; min-height:260px; max-height:76vh; background:#001726; color:#dff6f3; border-radius:8px; border:1px solid rgba(255,255,255,0.02); padding:12px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace; font-size:13px; line-height:1.4; box-sizing:border-box;}
+  .toolbar{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap}
+  button{background:linear-gradient(180deg,#34d399,#10b981); border:0; padding:8px 12px; border-radius:8px; color:#042028; cursor:pointer; font-weight:700}
+  button.ghost{background:transparent; color:var(--accent); border:1px solid rgba(126,231,199,0.12)}
+  button.warn{background:linear-gradient(180deg,#fb7185,#f43f5e); color:#fff}
+  .small{font-size:13px;color:var(--muted)}
+  /* right side */
+  .side{display:flex; flex-direction:column; gap:10px; height:78vh; overflow:auto;}
+  .snippetGroup{padding:8px; border-radius:8px; background:#04202a; border:1px solid rgba(255,255,255,0.02)}
+  .snippetGroup h3{margin:0 0 6px 0; color:#bfeee1; font-size:14px}
+  .snippet{background:#011826; padding:8px; margin:8px 0; border-radius:6px; border:1px solid rgba(255,255,255,0.02); font-family:ui-monospace,monospace; font-size:12px; color:#cfeffd; white-space:pre-wrap; max-height:140px; overflow:auto}
+  .snippet .controls{display:flex; gap:6px; margin-top:6px}
+  .snippet button{padding:6px 8px; font-size:12px}
+  /* console */
+  .console{margin-top:12px; background:#001217; border-radius:8px; padding:10px; min-height:110px; color:#bfffe6; font-family:ui-monospace,monospace; overflow:auto; border:1px solid rgba(255,255,255,0.03)}
+  footer{grid-column:1/-1; color:var(--muted); margin-top:8px; font-size:13px; text-align:center}
+  @media(max-width:1000px){
+    .app{grid-template-columns:1fr; padding:12px}
+    .side{height:360px}
+    .editorWrap{height:58vh}
+  }
+</style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div>
+        <h1>Python Playground</h1>
+        <p class="lead">Write Python on the left — snippets (Basic / Core / Advanced) on the right. Uses <strong>Pyodide</strong> to run Python in the browser.</p>
+      </div>
+      <div class="small">Tip: first load may take a few seconds (downloads Pyodide). Works offline after load.</div>
+    </header>
+
+    <!-- Editor Column -->
+    <div class="editorCard">
+      <div class="editorWrap">
+        <label class="small">Editor</label>
+        <textarea id="editor" spellcheck="false">
+# Welcome to Python Playground!
+# Try a snippet from the right, or write your own code.
+# Example:
+for i in range(5):
+    print("Hello", i)
+        </textarea>
+
+        <div class="toolbar">
+          <button id="runBtn">Run ▶</button>
+          <button id="runSelectionBtn" class="ghost">Run Selection</button>
+          <button id="stopBtn" class="warn">Stop ✖</button>
+          <button id="clearOut" class="ghost">Clear Output</button>
+          <button id="saveBtn" class="ghost">Save .py</button>
+          <button id="loadSample" class="ghost">Load Sample Project</button>
+          <div style="flex:1"></div>
+          <div class="small" id="status">Pyodide: not loaded</div>
+        </div>
+
+        <div style="margin-top:8px">
+          <label class="small">Console</label>
+          <div id="console" class="console">Output appears here...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Side Column -->
+    <aside class="sideCard">
+      <div class="side">
+        <!-- Basic -->
+        <div class="snippetGroup">
+          <h3>Basic — Variables, IO, Conditionals, Loops, Functions</h3>
+
+          <div class="snippet" data-code="# Variables & types
+x = 10
+name = 'Alice'
+pi = 3.14
+print('x:', x, 'name:', name, 'pi:', pi)">
+<strong># Variables & types</strong>
+<div class="controls">
+  <button onclick="insertSnippet(this, false)">Insert</button>
+  <button onclick="insertSnippet(this, true)">Run</button>
+</div>
+</div>
+
+          <div class="snippet" data-code="# Input/Output (note: prompt may not be available in Pyodide)
+print('Hello from Python!')">
+<strong># Print Hello</strong>
+<div class="controls">
+  <button onclick="insertSnippet(this, false)">Insert</button>
+  <button onclick="insertSnippet(this, true)">Run</button>
+</div>
+</div>
+
+          <div class="snippet" data-code="# Loops & conditionals
+for i in range(1,6):
+    if i % 2 == 0:
+        print(i, 'even')
+    else:
+        print(i, 'odd')">
+<strong># Loops & Conditionals</strong>
+<div class="controls">
+  <button onclick="insertSnippet(this, false)">Insert</button>
+  <button onclick="insertSnippet(this, true)">Run</button>
+</div>
+</div>
+
+          <div class="snippet" data-code="# Functions
+def add(a,b):
+    return a + b
+
+print('2 + 3 =', add(2,3))">
+<strong># Functions</strong>
+<div class="controls">
+  <button onclick="insertSnippet(this, false)">Insert</button>
+  <button onclick="insertSnippet(this, true)">Run</button>
+</div>
+</div>
+
+        </div>
+
+        <!-- Core -->
+        <div class="snippetGroup">
+          <h3>Core — *args, kwargs, Lambdas, Files, Exceptions</h3>
+
+          <div class="snippet" data-code="# *args and **kwargs
+def f(*args, **kwargs):
+    print('args:', args)
+    print('kwargs:', kwargs)
+
+f(1,2, a=3, b=4)">
+<strong># *args & **kwargs</strong>
+<div class="controls">
+  <button onclick="insertSnippet(this, false)">Insert</button>
+  <button onclick="insertSnippet(this, true)">Run</button>
+</div>
+</div>
+
+          <div class="snippet" data-code="# Lambda & list comprehension
+nums = [1,2,3,4,5]
+squares = list(map(lambda x: x*x, nums))
+comp = [x*x for x in nums]
+print('map:', squares)
+print('comp:', comp)">
+<strong># Lambda & Comprehension</strong>
+<div class="controls">
+  <button onclick="insertSnippet(this, false)">Insert</button>
+  <button onclick="insertSnippet(this, true)">Run</button>
+</div>
+</div>
+
+          <div class="snippet" data-code="# File write & read (uses virtual filesystem)
+with open('demo.txt','w') as f:
+    f.write('Hello playground')
+with open('demo.txt','r') as f:
+    print('file:', f.read())">
+<strong># File Read/Write</strong>
+<div class="controls">
+  <button onclick="insertSnippet(this, false)">Insert</button>
+  <button onclick="insertSnippet(this, true)">Run</button>
+</div>
+</div>
+
+          <div class="snippet" data-code="# Exception handling
+try:
+    print(1/0)
+except Exception as e:
+    print('Error:', e)
+finally:
+    print('Done')">
+<strong># Exception Handling</strong>
+<div class="controls">
+  <button onclick="insertSnippet(this, false)">Insert</button>
+  <button onclick="insertSnippet(this, true)">Run</button>
+</div>
+</div>
+
+        </div>
+
+        <!-- Advanced -->
+        <div class="snippetGroup">
+          <h3>Advanced — Generators, Decorators, AsyncIO, Threads, SQLite</h3>
+
+          <div class="snippet" data-code="# Generators
+def counter(n):
+    i = 0
+    while i < n:
+        yield i
+        i += 1
+
+for v in counter(5):
+    print('val', v)">
+<strong># Generators</strong>
+<div class="controls">
+  <button onclick="insertSnippet(this, false)">Insert</button>
+  <button onclick="insertSnippet(this, true)">Run</button>
+</div>
+</div>
+
+          <div class="snippet" data-code="# Decorator
+def log(fn):
+    def wrapper(*a, **k):
+        print('calling', fn.__name__)
+        res = fn(*a, **k)
+        print('done', fn.__name__)
+        return res
+    return wrapper
+
+@log
+def greet(name):
+    print('Hi', name)
+
+greet('Dev')">
+<strong># Decorator</strong>
+<div class="controls">
+  <button onclick="insertSnippet(this, false)">Insert</button>
+  <button onclick="insertSnippet(this, true)">Run</button>
+</div>
+</div>
+
+          <div class="snippet" data-code="# AsyncIO example
+import asyncio
+
+async def say(msg, t):
+    await asyncio.sleep(t)
+    print(msg)
+
+async def main():
+    await asyncio.gather(say('first',0.5), say('second', 0.1))
+
+asyncio.run(main())">
+<strong># async / await (asyncio)</strong>
+<div class="controls">
+  <button onclick="insertSnippet(this, false)">Insert</button>
+  <button onclick="insertSnippet(this, true)">Run</button>
+</div>
+</div>
+
+          <div class="snippet" data-code="# SQLite demo (in-browser filesystem)
+import sqlite3
+conn = sqlite3.connect(':memory:')
+cur = conn.cursor()
+cur.execute('CREATE TABLE users (name TEXT, age INT)')
+cur.execute(\"INSERT INTO users VALUES ('A', 21)\")
+cur.execute('SELECT * FROM users')
+print(cur.fetchall())
+conn.close()">
+<strong># SQLite (in-memory)</strong>
+<div class="controls">
+  <button onclick="insertSnippet(this, false)">Insert</button>
+  <button onclick="insertSnippet(this, true)">Run</button>
+</div>
+</div>
+
+        </div>
+
+        <div style="padding:6px;color:var(--muted);font-size:13px">
+          <strong>Notes:</strong>
+          <ul>
+            <li>Pyodide loads on first use — please wait for status to change to "ready".</li>
+            <li>Browser security restricts some features (no blocking native prompts, limited filesystem persistence).</li>
+            <li>You can save your editor content to a <code>.py</code> file locally.</li>
+          </ul>
+        </div>
+
+      </div>
+    </aside>
+
+    <footer>Built with Pyodide — run Python in the browser • © Playground</footer>
+  </div>
+
+<script>
+  // UI helpers
+  const editor = document.getElementById('editor');
+  const consoleEl = document.getElementById('console');
+  const statusEl = document.getElementById('status');
+  let pyodide = null;
+  let pyRunner = null; // controller for running tasks
+  let isRunning = false;
+
+  // load Pyodide asynchronously
+  async function loadPyodideAndPackages(){
+    statusEl.textContent = 'Loading Pyodide…';
+    try {
+      // Using jsDelivr CDN for pyodide
+      const pyodideScript = document.createElement('script');
+      pyodideScript.src = 'https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js';
+      document.head.appendChild(pyodideScript);
+      await new Promise((res) => pyodideScript.onload = res);
+
+      pyodide = await loadPyodide({indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.23.4/full/'});
+      statusEl.textContent = 'Pyodide ready';
+      // preload commonly used packages (sqlite3 available by default)
+      // you can load micropip packages if needed:
+      // await pyodide.loadPackage(['micropip']); 
+    } catch (err) {
+      statusEl.textContent = 'Pyodide failed to load';
+      appendConsole('Error loading Pyodide: ' + err);
+    }
+  }
+
+  // auto-load on page open
+  loadPyodideAndPackages();
+
+  // console helpers
+  function appendConsole(text){
+    const now = new Date().toLocaleTimeString();
+    consoleEl.textContent += `\n[${now}] ${text}`;
+    consoleEl.scrollTop = consoleEl.scrollHeight;
+  }
+  function clearConsole(){ consoleEl.textContent = ''; }
+
+  // insert snippet or run directly
+  function insertSnippet(btn, runImmediately){
+    const snippetEl = btn.closest('.snippet');
+    const code = snippetEl.getAttribute('data-code') || snippetEl.textContent;
+    // insert at cursor position
+    const start = editor.selectionStart || editor.value.length;
+    const before = editor.value.slice(0, start);
+    const after = editor.value.slice(start);
+    editor.value = before + code + "\n\n" + after;
+    editor.focus();
+    if (runImmediately) runCode();
+  }
+
+  // run selection or full
+  async function runCode(useSelection=false){
+    if (!pyodide){
+      appendConsole('Pyodide not ready yet — loading...');
+      return;
+    }
+    if (isRunning){ appendConsole('Already running — stop first'); return; }
+    const code = useSelection && editor.selectionStart !== editor.selectionEnd
+      ? editor.value.substring(editor.selectionStart, editor.selectionEnd)
+      : editor.value;
+
+    // capture stdout & stderr
+    appendConsole('--- Running code ---');
+    clearPyodideStdout();
+    isRunning = true;
+    try {
+      // wrap to capture prints more reliably
+      await pyodide.runPythonAsync(`
+import sys, asyncio
+from js import console
+
+# redirect print to js console via a helper - but we'll use pyodide stdout capturing below
+`);
+      // run code
+      const result = await pyodide.runPythonAsync(code);
+      // show result if any (non-None)
+      if (result !== undefined && result !== null) {
+        appendConsole(String(result));
+      }
+    } catch (err) {
+      appendConsole('Error: ' + err);
+    } finally {
+      isRunning = false;
+      appendConsole('--- Finished ---');
+    }
+  }
+
+  // run selection helper
+  document.getElementById('runSelectionBtn').addEventListener('click', () => runCode(true));
+  document.getElementById('runBtn').addEventListener('click', () => runCode(false));
+
+  // stop (best effort) — Pyodide does not offer safe abort for long-running Python code in older versions
+  document.getElementById('stopBtn').addEventListener('click', () => {
+    // Best-effort: set flag and inform user
+    if (!isRunning) { appendConsole('No running task'); return; }
+    appendConsole('Stop requested. If code is in a blocking C extension it may not stop immediately.');
+    // For cooperative stopping, user code should check for an external flag.
+  });
+
+  // clear
+  document.getElementById('clearOut').addEventListener('click', () => { clearConsole(); appendConsole('Console cleared'); });
+
+  // save .py
+  document.getElementById('saveBtn').addEventListener('click', () => {
+    const blob = new Blob([editor.value], {type: 'text/plain'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'playground.py'; document.body.appendChild(a); a.click();
+    a.remove(); URL.revokeObjectURL(url);
+    appendConsole('File saved: playground.py');
+  });
+
+  // load sample
+  document.getElementById('loadSample').addEventListener('click', () => {
+    editor.value = `# Sample: Fetch and process JSON using requests (Pyodide supports package install via micropip)
+import json
+print('Hello from sample')
+for i in range(3):
+    print('line', i)
+`;
+    appendConsole('Sample loaded into editor');
+  });
+
+  // redirect Python stdout/stderr to console
+  function clearPyodideStdout(){
+    // Install a small shim in pyodide to forward prints to JS console if possible.
+    if (!pyodide) return;
+    try {
+      pyodide.runPython(`
+import sys, builtins
+class JSWriter:
+    def write(self, s):
+        if s and not s.isspace():
+            from js import console
+            console.log(s)
+    def flush(self):
+        pass
+sys.stdout = JSWriter()
+sys.stderr = JSWriter()
+`);
+      // Also capture console.log from JS side to our page console
+      // Pyodide's JS console logs will appear in browser console; we add a small bridge:
+      // override console.log to also append
+      const orig = console.log;
+      console.log = function(...args){
+        orig.apply(console, args);
+        try { appendConsole(args.map(a => (typeof a === 'object' ? JSON.stringify(a) : String(a))).join(' ')); } catch(e){}
+      };
+    } catch (e) { /* ignore */ }
+  }
+
+  // initial small message
+  appendConsole('Welcome — waiting for Pyodide (loads from CDN).');
+
+  // keyboard shortcut: Ctrl+Enter to run
+  editor.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      runCode(false);
+    }
+  });
+
+  // make snippet elements show data-code as text content for better UX
+  document.querySelectorAll('.snippet').forEach(s=>{
+    const code = s.getAttribute('data-code') || '';
+    // show the code snippet inside with small monospace (already present)
+    // we keep the inner HTML title + controls; no changes needed
+  });
+
+  // accessibility: focus editor on load
+  window.addEventListener('load', () => { editor.focus(); });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Python Core Concepts</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; background: #f4f4f4; }
+    h1, h2 { color: #333; }
+    pre { background: #222; color: #0f0; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    .section { background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+
+<h1>Python CORE Concepts</h1>
+
+<div class="section">
+  <h2>1. Functions in Python</h2>
+  <p>Functions help in code reuse and modularity.</p>
+  <pre>
+def greet(name):
+    return f"Hello, {name}"
+
+print(greet("John"))
+  </pre>
+</div>
+
+<div class="section">
+  <h2>2. Lambda Functions</h2>
+  <p>Short anonymous functions.</p>
+  <pre>
+square = lambda x: x * x
+print(square(5))
+  </pre>
+</div>
+
+<div class="section">
+  <h2>3. Modules & Importing</h2>
+  <p>Modules help organize Python code.</p>
+  <pre>
+import math
+
+print(math.sqrt(16))
+  </pre>
+</div>
+
+<div class="section">
+  <h2>4. Object-Oriented Programming (OOP)</h2>
+  <p>Python supports classes and objects.</p>
+  <pre>
+class Car:
+    def __init__(self, brand, color):
+        self.brand = brand
+        self.color = color
+
+    def describe(self):
+        print(f"{self.color} {self.brand}")
+
+car1 = Car("Tesla", "Red")
+car1.describe()
+  </pre>
+</div>
+
+<div class="section">
+  <h2>5. File Handling</h2>
+  <p>Python allows reading and writing files.</p>
+  <pre>
+# Writing to a file
+with open("demo.txt", "w") as f:
+    f.write("Hello Python")
+
+# Reading a file
+with open("demo.txt", "r") as f:
+    print(f.read())
+  </pre>
+</div>
+
+<div class="section">
+  <h2>6. Error & Exception Handling</h2>
+  <p>Used to prevent program crashes.</p>
+  <pre>
+try:
+    x = 10 / 0
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+finally:
+    print("Execution Complete")
+  </pre>
+</div>
+
+<div class="section">
+  <h2>7. Iterators in Python</h2>
+  <pre>
+my_list = [1, 2, 3]
+it = iter(my_list)
+
+print(next(it))
+print(next(it))
+print(next(it))
+  </pre>
+</div>
+
+<div class="section">
+  <h2>8. Generators</h2>
+  <p>Generators create iterators using <code>yield</code>.</p>
+  <pre>
+def numbers():
+    for i in range(1, 4):
+        yield i
+
+for num in numbers():
+    print(num)
+  </pre>
+</div>
+
+<div class="section">
+  <h2>9. Decorators</h2>
+  <p>Used to modify function behavior.</p>
+  <pre>
+def decorator(func):
+    def wrapper():
+        print("Before function")
+        func()
+        print("After function")
+    return wrapper
+
+@decorator
+def say_hello():
+    print("Hello!")
+
+say_hello()
+  </pre>
+</div>
+
+</body>
+</html>

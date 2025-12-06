@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Python Basics</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #0c1424;
+        color: #d9f5ff;
+        padding: 20px;
+    }
+    h1, h2 {
+        color: #7ff5d2;
+    }
+    .card {
+        background: #0f1b30;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 10px;
+        border: 1px solid #1b2c4a;
+        box-shadow: 0px 0px 10px #06101e;
+    }
+    pre {
+        background: #08101f;
+        padding: 10px;
+        border-radius: 8px;
+        overflow-x: auto;
+        border: 1px solid #132237;
+        color: #b8f7ea;
+    }
+</style>
+</head>
+<body>
+
+<h1>Python — Basics</h1>
+<p>This page covers the basic Python concepts with clear explanations and code examples.</p>
+
+<!-- VARIABLES -->
+<div class="card">
+    <h2>1. Variables</h2>
+    <p>Variables store data in Python.</p>
+    <pre>
+x = 10
+name = "Arshad"
+price = 99.5
+
+print(x, name, price)
+    </pre>
+</div>
+
+<!-- DATA TYPES -->
+<div class="card">
+    <h2>2. Data Types</h2>
+    <pre>
+a = 10            # int
+b = 3.14          # float
+c = "Hello"       # string
+d = True          # bool
+e = [1,2,3]       # list
+f = (1,2,3)       # tuple
+g = {"a": 1}      # dict
+h = {1,2,3}       # set
+    </pre>
+</div>
+
+<!-- INPUT OUTPUT -->
+<div class="card">
+    <h2>3. Input and Output</h2>
+    <pre>
+name = input("Enter your name: ")
+print("Hello,", name)
+    </pre>
+</div>
+
+<!-- CONDITIONALS -->
+<div class="card">
+    <h2>4. Conditionals (if / elif / else)</h2>
+    <pre>
+x = 10
+
+if x > 5:
+    print("Greater")
+elif x == 5:
+    print("Equal")
+else:
+    print("Smaller")
+    </pre>
+</div>
+
+<!-- LOOPS -->
+<div class="card">
+    <h2>5. Loops</h2>
+    <h3>For Loop:</h3>
+    <pre>
+for i in range(5):
+    print(i)
+    </pre>
+
+    <h3>While Loop:</h3>
+    <pre>
+count = 0
+while count < 5:
+    print(count)
+    count += 1
+    </pre>
+</div>
+
+<!-- FUNCTIONS -->
+<div class="card">
+    <h2>6. Functions</h2>
+    <pre>
+def add(a, b):
+    return a + b
+
+print(add(5, 3))
+    </pre>
+</div>
+
+<!-- LISTS -->
+<div class="card">
+    <h2>7. Lists</h2>
+    <pre>
+nums = [1, 2, 3]
+nums.append(4)
+nums.remove(2)
+
+print(nums)
+    </pre>
+</div>
+
+<!-- TUPLES -->
+<div class="card">
+    <h2>8. Tuples</h2>
+    <pre>
+t = (1, 2, 3)
+print(t[0])
+    </pre>
+</div>
+
+<!-- DICTIONARY -->
+<div class="card">
+    <h2>9. Dictionaries</h2>
+    <pre>
+student = {"name": "Arshad", "age": 20}
+
+print(student["name"])
+
+student["age"] = 21
+    </pre>
+</div>
+
+<!-- SETS -->
+<div class="card">
+    <h2>10. Sets</h2>
+    <pre>
+s = {1, 2, 3}
+s.add(4)
+
+print(s)
+    </pre>
+</div>
+
+</body>
+</html>
