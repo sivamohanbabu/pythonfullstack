@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Selectors Examples</title>
+<style>
+/* === Basic Selectors === */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+header, footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+main {
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+h2 {
+    color: #333;
+}
+pre {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+/* === Basic Selectors === */
+p {
+    color: #555;
+}
+h1 {
+    color: #2196F3;
+}
+h2 {
+    color: #4CAF50;
+}
+
+/* === Class and ID Selectors === */
+.red-text {
+    color: red;
+}
+#blue-text {
+    color: blue;
+}
+
+/* === Grouping Selectors === */
+h1, h2, p {
+    margin-bottom: 10px;
+}
+
+/* === Descendant Selector === */
+.container p {
+    font-weight: bold;
+}
+
+/* === Child Selector === */
+ul > li {
+    list-style-type: square;
+}
+
+/* === Adjacent Sibling Selector === */
+h2 + p {
+    font-style: italic;
+}
+
+/* === General Sibling Selector === */
+h2 ~ p {
+    background-color: #eee;
+    padding: 5px;
+}
+
+/* === Attribute Selectors === */
+a[target="_blank"] {
+    color: orange;
+}
+input[type="text"] {
+    border: 2px solid #2196F3;
+    padding: 5px;
+}
+
+/* === Pseudo-classes === */
+a:hover {
+    color: green;
+}
+li:first-child {
+    font-weight: bold;
+}
+li:last-child {
+    font-style: italic;
+}
+li:nth-child(2) {
+    color: purple;
+}
+
+/* === Pseudo-elements === */
+p::first-letter {
+    font-size: 24px;
+    color: #ff5722;
+}
+p::first-line {
+    font-weight: bold;
+}
+
+/* === Universal Selector === */
+* {
+    box-sizing: border-box;
+}
+
+/* === Example boxes for visibility === */
+.selector-box {
+    border: 1px solid #333;
+    padding: 10px;
+    margin: 10px 0;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>CSS Selectors Demonstration</h1>
+</header>
+
+<main>
+    <section>
+        <h2>1. Basic Selectors</h2>
+        <p>This is a paragraph styled with a basic selector.</p>
+        <h1>This is an H1 heading</h1>
+        <h2>This is an H2 heading</h2>
+    </section>
+
+    <section>
+        <h2>2. Class and ID Selectors</h2>
+        <p class="red-text">This paragraph has a class "red-text".</p>
+        <p id="blue-text">This paragraph has an ID "blue-text".</p>
+    </section>
+
+    <section>
+        <h2>3. Grouping Selectors</h2>
+        <p>Paragraph styled along with H1 and H2 using grouping selector.</p>
+    </section>
+
+    <section>
+        <h2>4. Descendant and Child Selectors</h2>
+        <div class="container">
+            <p>Paragraph inside a div with class container (descendant selector).</p>
+        </div>
+        <ul>
+            <li>List item 1 (child selector)</li>
+            <li>List item 2</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>5. Adjacent and General Sibling Selectors</h2>
+        <h2>Heading</h2>
+        <p>Paragraph immediately after H2 (adjacent sibling).</p>
+        <p>Another paragraph after H2 (general sibling).</p>
+    </section>
+
+    <section>
+        <h2>6. Attribute Selectors</h2>
+        <a href="https://example.com" target="_blank">Link with target="_blank"</a><br>
+        <input type="text" placeholder="Text input with type selector">
+    </section>
+
+    <section>
+        <h2>7. Pseudo-classes</h2>
+        <ul>
+            <li>First item</li>
+            <li>Second item</li>
+            <li>Third item</li>
+        </ul>
+        <a href="#">Hover over this link</a>
+    </section>
+
+    <section>
+        <h2>8. Pseudo-elements</h2>
+        <p>This paragraph demonstrates <code>::first-letter</code> and <code>::first-line</code> pseudo-elements styling.</p>
+    </section>
+
+    <section>
+        <h2>9. Universal Selector</h2>
+        <div class="selector-box">
+            All elements have <code>box-sizing: border-box</code> applied by universal selector (*)
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    &copy; 2025 CSS Selectors Demo
+</footer>
+
+</body>
+</html>
+<!-- Basic Selectors: element selectors like p, h1, h2.
+
+Class and ID Selectors: .class and #id.
+
+Grouping Selectors: h1, h2, p.
+
+Descendant Selector: .container p.
+
+Child Selector: ul > li.
+
+Adjacent Sibling: h2 + p.
+
+General Sibling: h2 ~ p.
+
+Attribute Selectors: a[target="_blank"], input[type="text"].
+
+Pseudo-classes: :hover, :first-child, :last-child, :nth-child(n).
+
+Pseudo-elements: ::first-letter, ::first-line.
+
+Universal Selector: * { box-sizing: border-box; }. -->

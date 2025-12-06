@@ -1,0 +1,11 @@
+Let’s create a complete personal portfolio project using HTML and CSS only. I’ll make it modern, responsive, and professional-looking, including:
+
+Header with navigation
+
+About section
+
+Skills section
+
+Projects/Portfolio section
+
+Contact form

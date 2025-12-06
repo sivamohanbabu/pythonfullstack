@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Interview Questions</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+header, footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+main {
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+h2 {
+    color: #333;
+}
+nav {
+    text-align: center;
+    margin-bottom: 20px;
+}
+nav button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #f8f8f8;
+}
+nav button.active {
+    background-color: #333;
+    color: #fff;
+}
+section {
+    display: none;
+}
+section.active {
+    display: block;
+}
+h3 {
+    margin: 10px 0 5px;
+    color: #444;
+    cursor: pointer;
+}
+.answer {
+    display: none;
+    margin: 5px 0 15px;
+    padding: 10px;
+    background-color: #eee;
+    border-radius: 5px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>CSS Interview Questions & Answers</h1>
+    <p>Interactive Q&A for freshers and experienced developers</p>
+</header>
+
+<main>
+    <nav>
+        <button class="tab-btn active" data-target="freshers">Freshers Q&A</button>
+        <button class="tab-btn" data-target="experienced">Experienced Q&A</button>
+    </nav>
+
+    <!-- Freshers Questions -->
+    <section id="freshers" class="active">
+        <h2>CSS Questions for Freshers</h2>
+        <h3>1. What is CSS?</h3>
+        <div class="answer">CSS (Cascading Style Sheets) is used to style HTML elements by controlling layout, colors, fonts, spacing, and more.</div>
+
+        <h3>2. Difference between inline, internal, and external CSS?</h3>
+        <div class="answer">Inline CSS: using the style attribute in HTML. Internal CSS: inside &lt;style&gt; in head. External CSS: in a separate .css file linked via &lt;link&gt;.</div>
+
+        <h3>3. What are selectors in CSS?</h3>
+        <div class="answer">Selectors are patterns used to select elements you want to style. Examples: element selectors, class selectors, ID selectors.</div>
+
+        <h3>4. Difference between relative, absolute, and fixed positioning?</h3>
+        <div class="answer">Relative: moves relative to its normal position. Absolute: positions relative to the nearest positioned ancestor. Fixed: stays in place relative to viewport.</div>
+
+        <h3>5. What is the difference between em, rem, px, % units?</h3>
+        <div class="answer">px: pixels, em: relative to parent font-size, rem: relative to root font-size, %: percentage relative to parent.</div>
+    </section>
+
+    <!-- Experienced Questions -->
+    <section id="experienced">
+        <h2>CSS Questions for Experienced Developers</h2>
+        <h3>21. Difference between relative, absolute, fixed, and sticky positioning?</h3>
+        <div class="answer">Sticky is relative until a certain scroll position, then it becomes fixed.</div>
+
+        <h3>22. What is the difference between inline, inline-block, and block elements?</h3>
+        <div class="answer">Inline: only takes as much width as content; Block: takes full width; Inline-block: behaves like inline but allows width and height.</div>
+
+        <h3>23. Difference between flexbox and CSS grid?</h3>
+        <div class="answer">Flexbox: one-dimensional layout (row/column), Grid: two-dimensional layout (rows and columns).</div>
+
+        <h3>24. What are pseudo-classes and pseudo-elements?</h3>
+        <div class="answer">Pseudo-class: styles elements in a special state (:hover, :first-child). Pseudo-element: styles a part of element (::before, ::after).</div>
+
+        <h3>25. How does z-index work?</h3>
+        <div class="answer">z-index determines stack order of positioned elements (higher z-index appears on top).</div>
+
+        <h3>26. What is the difference between relative units (em/rem) and absolute units (px)?</h3>
+        <div class="answer">Relative units scale based on parent (em) or root (rem), absolute units like px do not scale.</div>
+
+        <h3>27. What is the difference between visibility:hidden and display:none?</h3>
+        <div class="answer">visibility:hidden hides the element but keeps its space, display:none removes it completely from layout.</div>
+
+        <h3>28. Difference between CSS transitions and animations?</h3>
+        <div class="answer">Transitions: change property over time triggered by event (hover). Animations: full keyframe animations, independent of events.</div>
+
+        <h3>29. What are media queries?</h3>
+        <div class="answer">Media queries allow responsive design by applying CSS based on device width, height, orientation, etc.</div>
+
+        <h3>30. How to center a div vertically and horizontally using flexbox?</h3>
+        <div class="answer">Use display:flex; justify-content:center; align-items:center; height:100%;</div>
+    </section>
+
+</main>
+
+<footer>
+    &copy; 2025 CSS Interview Practice
+</footer>
+
+<script>
+// Tab navigation
+const buttons = document.querySelectorAll('.tab-btn');
+const sections = document.querySelectorAll('section');
+
+buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        sections.forEach(sec => sec.classList.remove('active'));
+        document.getElementById(btn.dataset.target).classList.add('active');
+    });
+});
+
+// Toggle answers
+const questions = document.querySelectorAll('h3');
+questions.forEach(q => {
+    q.addEventListener('click', () => {
+        const answer = q.nextElementSibling;
+        answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+    });
+});
+</script>
+
+</body>
+</html>

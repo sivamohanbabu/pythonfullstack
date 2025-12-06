@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+<style>
+/* === Global Styles === */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+body {
+    line-height: 1.6;
+    background-color: #f5f5f5;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* === Header === */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+header nav {
+    margin-top: 10px;
+}
+header nav a {
+    color: white;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+header nav a:hover {
+    color: #4CAF50;
+}
+
+/* === Hero Section === */
+.hero {
+    background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+    color: white;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+.hero p {
+    font-size: 1.2rem;
+}
+
+/* === Sections === */
+section {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* === About === */
+#about h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+#about p {
+    color: #555;
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* === Skills === */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.skill {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* === Portfolio === */
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.project {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+.project img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.project:hover {
+    transform: scale(1.05);
+}
+.project h3 {
+    padding: 15px;
+    color: #333;
+}
+.project p {
+    padding: 0 15px 15px;
+    color: #555;
+}
+
+/* === Contact Form === */
+form {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+input, textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+}
+button {
+    padding: 15px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+button:hover {
+    background-color: #4CAF50;
+}
+
+/* === Footer === */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* === Responsive === */
+@media(max-width:768px) {
+    .skills-container, .projects-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <h1>My Portfolio</h1>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Hello, I'm John Doe</h1>
+    <p>Front-End Developer | Designer | Problem Solver</p>
+</section>
+
+<!-- About Section -->
+<section id="about">
+    <h2>About Me</h2>
+    <p>Hello! I'm a passionate front-end developer with experience in creating responsive and user-friendly websites using HTML, CSS, and JavaScript. I love turning ideas into functional and visually appealing websites.</p>
+</section>
+
+<!-- Skills Section -->
+<section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-container">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Flexbox</div>
+        <div class="skill">Responsive Design</div>
+        <div class="skill">Git</div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects">
+    <h2>My Projects</h2>
+    <div class="projects-container">
+        <div class="project">
+            <img src="https://images.unsplash.com/photo-1581091215368-5e0b3b603b92?auto=format&fit=crop&w=600&q=80" alt="Project 1">
+            <h3>Portfolio Website</h3>
+            <p>A responsive personal portfolio website built with HTML, CSS, and Flexbox.</p>
+        </div>
+        <div class="project">
+            <img src="https://images.unsplash.com/photo-1502880200851-8f9b80b0a4f0?auto=format&fit=crop&w=600&q=80" alt="Project 2">
+            <h3>Landing Page</h3>
+            <p>A modern landing page with responsive design and interactive elements.</p>
+        </div>
+        <div class="project">
+            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80" alt="Project 3">
+            <h3>E-commerce Template</h3>
+            <p>A clean e-commerce template using HTML and CSS grid for layout.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Contact Me</h2>
+    <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<!-- Footer -->
+<footer>
+    &copy; 2025 John Doe | All Rights Reserved
+</footer>
+
+</body>
+</html>
